@@ -1,10 +1,10 @@
-name: "Net"
 input: "data"
-input_shape: {
-dim:1
-dim:3
-dim:224
-dim:224 }
+input_shape {
+  dim: 4
+  dim: 1
+  dim: 1
+  dim: 2
+}
 layer {
   name: "ip1"
   type: "InnerProduct"
@@ -18,16 +18,21 @@ layer {
   }
 }
 layer {
-  name: "accuracy"
-  type: "Accuracy"
+  name: "ip2"
+  type: "InnerProduct"
   bottom: "ip1"
-  bottom: "label"
-  top: "accuracy"
+  top: "ip2"
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "xavier"
+    }
+  }
 }
 layer {
   name: "loss"
   type: "SoftmaxWithLoss"
-  bottom: "ip1"
+  bottom: "ip2"
   bottom: "label"
   top: "loss"
 }
