@@ -1,0 +1,21 @@
+name: "IrisNet"
+input: "data"
+input_shape: { dim:1 dim:1 dim:1 dim:2 }
+layer {
+  name: "ip1"
+  type: "InnerProduct"
+  bottom: "data"
+  top: "ip1"
+  inner_product_param {
+    num_output: 2
+    weight_filler {
+      type: "xavier"
+    }
+  }
+}
+layer {
+  name: "prob"
+  type: "Softmax"
+  bottom: "ip1"
+  top: "prob"
+}
