@@ -17,7 +17,7 @@ if __name__ == '__main__':
     y = array(map(lambda x: int(2 * x[0] < x[1]), x))  # 创建标签
 
     x, xt, y, yt = sklearn.cross_validation.train_test_split(x, y)  # 分割训练集和数据集
-
+'''
     with h5py.File('train_data.h5', 'w') as f:
         f['data'] = x
         f['label'] = y.astype(float32)
@@ -32,3 +32,4 @@ if __name__ == '__main__':
 
     solver = caffe.get_solver('solver.prototxt')  # 设置优化器配置文件
     solver.solve()
+'''

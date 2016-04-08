@@ -27,4 +27,4 @@ if __name__ == '__main__':
         print i
         Net.blobs['data'].data[...] = i
         out = Net.forward()
-        print 'lebel:' + str(out['prob'][0].argmax())
+        print 'lebel:' + str(out['ip3'][0].argmax())
