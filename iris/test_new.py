@@ -20,7 +20,7 @@ if __name__ == '__main__':
     new_data['input'] = reshape(x, (len(x), 1, 1, 4))
     # print new_data['input']
     # 调用训练好的网络预测数据
-    Net = caffe.Net('deploy.prototxt', 'iris__iter_1000000.solverstate', caffe.TEST)
+    Net = caffe.Net('deploy.prototxt', 'iris__iter_1000000.caffemodel', caffe.TEST)
     out = Net.forward(data=new_data['input'])  # 调用测试数据
     # i 表示数据结果索引
     print out['ip3']
